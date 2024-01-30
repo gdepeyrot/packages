@@ -1,0 +1,10 @@
+--- a/agent/mibgroup/agentx/subagent.c
++++ b/agent/mibgroup/agentx/subagent.c
+@@ -503,6 +503,7 @@
+      */
+
+     internal_pdu = snmp_clone_pdu(pdu);
++    free(internal_pdu->contextName);
+     internal_pdu->contextName = (char *) internal_pdu->community;
+     internal_pdu->contextNameLen = internal_pdu->community_len;
+     internal_pdu->community = NULL;
