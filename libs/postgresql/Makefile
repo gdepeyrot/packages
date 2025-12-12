@@ -5,7 +5,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=postgresql
-PKG_VERSION:=15.6
+PKG_VERSION:=15.13
 PKG_RELEASE:=1
 PKG_MAINTAINER:=Daniel Golle <daniel@makrotopia.org>
 PKG_LICENSE:=PostgreSQL
@@ -17,7 +17,7 @@ PKG_SOURCE_URL:=\
 	http://ftp.postgresql.org/pub/source/v$(PKG_VERSION) \
 	ftp://ftp.postgresql.org/pub/source/v$(PKG_VERSION)
 
-PKG_HASH:=8455146ed9c69c93a57de954aead0302cafad035c2b242175d6aa1e17ebcb2fb
+PKG_HASH:=4f62e133d22ea08a0401b0840920e26698644d01a80c34341fb732dd0a90ca5d
 
 PKG_BUILD_FLAGS:=no-mips16
 PKG_FIXUP:=autoreconf
@@ -120,15 +120,6 @@ PGSQL_CONFIG_VARS:= \
 	USE_DEV_URANDOM=1 \
 	ac_cv_file__dev_urandom="/dev/urandom" \
 	ZIC=zic
-
-ifeq ($(CONFIG_USE_UCLIBC),y)
-# PostgreSQL does not build against uClibc with locales
-# enabled, due to an uClibc bug, see
-# http://lists.uclibc.org/pipermail/uclibc/2014-April/048326.html
-# so overwrite automatic detection and disable locale support
-PGSQL_CONFIG_VARS+= \
-		pgac_cv_type_locale_t=no
-endif
 
 TARGET_CONFIGURE_OPTS+=$(PGSQL_CONFIG_VARS)
 

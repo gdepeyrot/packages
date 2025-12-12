@@ -8,15 +8,15 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=knot
-PKG_VERSION:=3.4.6
+PKG_VERSION:=3.5.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://secure.nic.cz/files/knot-dns/
-PKG_HASH:=d19c5a1ff94b4f26027d635de108dbfc88f5652be86ccb3ba9a44ee9be0e5839
+PKG_HASH:=a614d5226ceed4b4cdd4a3badbb0297ea0f987f65948e4eb828119a3b5ac0a4b
 
 PKG_MAINTAINER:=Daniel Salzman <daniel.salzman@nic.cz>
-PKG_LICENSE:=GPL-3.0 LGPL-2.0 0BSD BSD-3-Clause OLDAP-2.8
+PKG_LICENSE:=GPL-2.0-or-later LGPL-2.0-or-later MIT ISC BSD-3-Clause
 PKG_CPE_ID:=cpe:/a:knot-dns:knot_dns
 
 PKG_FIXUP:=autoreconf
@@ -157,6 +157,7 @@ CONFIGURE_ARGS += 			\
 	--enable-dbus=libdbus           \
 	--enable-quic			\
 	--disable-fastparser		\
+	--disable-redis			\
 	--without-libidn		\
 	--with-libnghttp2=no		\
 	--with-rundir=/var/run/knot	\

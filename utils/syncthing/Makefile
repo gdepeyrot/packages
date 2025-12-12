@@ -1,16 +1,16 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=syncthing
-PKG_VERSION:=1.29.6
-PKG_RELEASE:=1
+PKG_VERSION:=1.30.0
+PKG_RELEASE:=3
 
 PKG_SOURCE:=syncthing-source-v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/syncthing/syncthing/releases/download/v$(PKG_VERSION)
-PKG_HASH:=28e7f4984a6a34fb4697448141ce2611a6510f5a4369c1669d4e766eb75cd878
+PKG_HASH:=ef1be71c66753c04212ab1c9c548e678d468bad98dc5461e83540a4ef5c2fcba
 
 PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/$(PKG_NAME)
 
-PKG_MAINTAINER:=Paul Spooren <mail@aparcar.org>, Van Waholtz <brvphoenix@gmail.com>
+PKG_MAINTAINER:=Van Waholtz <brvphoenix@gmail.com>, George Sapkin <george@sapk.in>
 PKG_LICENSE:=MPL-2.0
 PKG_LICENSE_FILES:=LICENSE
 PKG_CPE_ID:=cpe:/a:syncthing:syncthing
@@ -42,12 +42,12 @@ define Package/syncthing/Default
   DEPENDS:=$(GO_ARCH_DEPENDS)
   SECTION:=utils
   CATEGORY:=Utilities
+  USERID:=syncthing=499:syncthing=499
 endef
 
 define Package/syncthing
   $(call Package/syncthing/Default)
   TITLE:=Continuous file synchronization program
-  USERID:=syncthing=499:syncthing=499
 endef
 
 define Package/stdiscosrv
